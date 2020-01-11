@@ -1,6 +1,5 @@
 FROM php:7.4-fpm
 WORKDIR /var/www/
-COPY . /var/www/
 
 RUN echo "alias la='ls -la'" > ~/.bashrc
 
