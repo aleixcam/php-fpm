@@ -9,7 +9,7 @@ RUN apt update && apt upgrade -y && apt install -y \
 	unzip
 
 RUN pecl install xdebug \
-	&& echo zend_extension="/usr/local/php/modules/xdebug.so" >> /usr/local/etc/php/php.ini-development
+	&& docker-php-ext-enable xdebug
 
 RUN curl -sS https://getcomposer.org/installer | php \
 	&& mv composer.phar /usr/local/bin/composer
