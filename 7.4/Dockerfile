@@ -1,6 +1,8 @@
 FROM php:7.4-fpm
 WORKDIR /var/www/
 
+RUN echo "alias la='ls -la'" >> ~/.bashrc
+
 RUN apt update && apt upgrade -y && apt install -y \
 	git \
 	zip \
@@ -15,7 +17,7 @@ RUN curl -sS https://getcomposer.org/installer | php \
 
 ENV PHP_XDEBUG_ENABLED=0
 
-RUN echo "alias la='ls -la'" >> ~/.bashrc
+COPY ./entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/*.sh
 
-COPY entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["entrypoint.sh"]
