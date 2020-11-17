@@ -20,4 +20,4 @@ ENV PHP_XDEBUG_ENABLED=0
 COPY ./entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/*.sh
 
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
