@@ -13,6 +13,9 @@ RUN pecl install xdebug \
 RUN curl -sS https://getcomposer.org/installer | php \
 	&& mv composer.phar /usr/local/bin/composer
 
-ENV PHP_XDEBUG_ENABLE=0
+ENV PHP_XDEBUG_ENABLED=0
 
 RUN echo "alias la='ls -la'" >> ~/.bashrc
+
+COPY entrypoint.sh /usr/local/bin/
+ENTRYPOINT ["entrypoint.sh"]
