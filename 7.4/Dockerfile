@@ -9,11 +9,13 @@ RUN apt update && apt upgrade -y && apt install -y \
 	unzip \
 	&& apt-get autoremove -y
 
-RUN pecl install xdebug \
-	&& docker-php-ext-enable xdebug
-
 RUN curl -sS https://getcomposer.org/installer | php \
 	&& mv composer.phar /usr/local/bin/composer
+
+RUN docker-php-ext-install pdo pdo_mysql
+
+RUN pecl install xdebug \
+	&& docker-php-ext-enable xdebug
 
 ENV PHP_XDEBUG_ENABLED=0
 
